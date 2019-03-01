@@ -1,5 +1,5 @@
 # agile-project-dataset
-This dataset was exported from jira from two projects I was part of as ScrumMaster.
+The dataset contains anonymized project data from jira.
 
 
 ## Data
