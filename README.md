@@ -21,4 +21,5 @@ The dataset is located in data directory, it consists of one csv file:
 
 > __Note__: Some of the observation may not make sense For example there are observations with a cycle time -1. During a “migration or cleanup session” this may resulted in some cases where finished date is before the created date.
 
-For more details have a look at the R-Notebook output [analyze.nb.html](analyze.nb.html).
+## R-Notebook Analysis
+For more details have a look at the R-Notebook output [details_dataset.md](details_dataset.md).
