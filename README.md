@@ -19,7 +19,7 @@ The dataset is located in data directory, it consists of one csv file:
 | finished_date  |  date when the task was closed in jira |
 | cycle_times  |  days between created_date and finished_date |
 
-> __Note__: Some of the observation may not make sense For example there are observations with a cycle time -1. During a “migration or cleanup session” this may resulted in some cases where finished date is before the created date.
+> __Note__: Some of the observation may be garbage. For example there are observations with a cycle time -1. During a “migration or cleanup session” this may resulted in some cases where finished date is before the created date.
 
 ## R-Notebook Analysis
 For more details have a look at the R-Notebook output [details_dataset.md](details_dataset.md).
