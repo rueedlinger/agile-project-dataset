@@ -4,7 +4,7 @@ The dataset contains anonymized project data from Jira.
 
 ## Data
 
-The dataset is located in data directory, it consists of one csv file:
+The dataset is located in the data directory and consists of one csv file:
 - [jira.csv](data/jira.csv) the data with anonymized tasks from jiras.
 
 ### Attribute Information (jira.csv)
