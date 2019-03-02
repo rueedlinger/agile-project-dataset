@@ -13,7 +13,7 @@ This R-Notebook is a short introduction to the __agile project dataset__. The da
 require(ggplot2)
 ```
 
-The whole data set is stored in a csv file. Some of the observation may not make sense For example there are observations with a cycle time _-1_. During a "migration or cleanup session" this may resulted in some cases where finished date is before the created date.
+The whole data set is stored in a csv file. Some of the observation may not make sense. For example there are observations with a cycle time _-1_. During a "migration or cleanup session" this may resulted in some cases where finished date is before the created date.
 
 ```{r}
 df <- read.csv('data/jira.csv', sep = ',', header = T)

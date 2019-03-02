@@ -13,7 +13,7 @@ require(ggplot2)
     ## Loading required package: ggplot2
 
 The whole data set is stored in a csv file. Some of the observation may
-not make sense For example there are observations with a cycle time
+not make sense. For example there are observations with a cycle time
 *-1*. During a “migration or cleanup session” this may resulted in some
 cases where finished date is before the created date.
 
