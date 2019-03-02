@@ -1,0 +1,71 @@
+---
+title: "agile-project-dataset"
+output:
+  html_notebook: default
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+This R-Notebook is a short introduction to the __agile project dataset__. The data set contains anonymized project data from Jira.
+
+```{r}
+require(ggplot2)
+```
+
+The whole data set is stored in a csv file. Some of the observation may not make sense For example there are observations with a cycle time _-1_. During a "migration or cleanup session" this may resulted in some cases where finished date is before the created date.
+
+```{r}
+df <- read.csv('data/jira.csv', sep = ',', header = T)
+df$created_date <- as.Date(df$created_date)
+df$finished_date <- as.Date(df$finished_date)
+df$project <- as.factor(df$project)
+
+head(df)
+summary(df)
+```
+
+The data set contains data from different years. 
+
+```{r}
+freq_year <- data.frame(table(format(df$created_date, format='%Y')))
+names(freq_year) <- c('year', 'freq')
+ggplot(data=freq_year, aes(x=year, y=freq)) + geom_bar(stat="identity")
+
+```
+
+Let's inspect the data from 2018.
+
+```{r}
+df <- df[df$created_date > '2017-12-31',]
+df <- df[df$cycle_time_days > -1,]
+head(df)
+```
+
+We can plot the histogram of the cycle times from 2018.
+
+```{r}
+ggplot(df, aes(x=cycle_time_days)) + geom_histogram(bins = 20)
+```
+
+Another interesting aspect is the boxplot for the two projects in 2018.
+
+```{r}
+ggplot(df, aes(x = project, y = cycle_time_days)) + geom_boxplot()
+```
+
+Last we can plot the time series when Jira task were finished.
+
+```{r}
+freq <- table(finished_date = df$finished_date)
+
+
+
+time_series <- data.frame(freq)
+time_series$finished_date <- as.Date(time_series$finished_date)
+names(time_series) <- c('finished_date', 'freq')
+
+
+ggplot( data = time_series, aes( finished_date, freq )) + geom_line() 
+```
+
