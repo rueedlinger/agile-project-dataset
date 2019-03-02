@@ -99,7 +99,7 @@ ggplot(df, aes(x = project, y = cycle_time_days)) + geom_boxplot()
 
 ![](details_dataset_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
-## T-Test
+### T-Test
 
 Now we can use a t-test to compare the two project cycle times.
 
@@ -135,7 +135,7 @@ t.test(df$cycle_time_days ~ df$project, var.equal = TRUE)
     ## mean in group 0 mean in group 1 
     ##        3.705882        6.327586
 
-## Time Series
+### Time Series
 
 Let’s plot the time series data when Jira task were finished.
 

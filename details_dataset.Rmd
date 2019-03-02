@@ -58,7 +58,7 @@ Another interesting aspect is the boxplot for the two projects in 2018.
 ggplot(df, aes(x = project, y = cycle_time_days)) + geom_boxplot()
 ```
 
-## T-Test
+### T-Test
 
 Now we can use a t-test to compare the two project cycle times.
 
@@ -70,7 +70,7 @@ t.test(df$cycle_time_days ~ df$project, var.equal = FALSE)
 t.test(df$cycle_time_days ~ df$project, var.equal = TRUE) 
 ```
 
-## Time Series
+### Time Series
 
 Let's plot the time series data when Jira task were finished.
 
