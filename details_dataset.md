@@ -65,6 +65,8 @@ ggplot(data=freq_year, aes(x=year, y=freq)) + geom_bar(stat="identity")
 
 ![](details_dataset_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
+## Project Data from 2018
+
 Let’s inspect the data from 2018.
 
 ``` r
@@ -97,7 +99,45 @@ ggplot(df, aes(x = project, y = cycle_time_days)) + geom_boxplot()
 
 ![](details_dataset_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
-Last we can plot the time series when Jira task were finished.
+## T-Test
+
+Now we can use a t-test to compare the two project cycle times.
+
+``` r
+t.test(df$cycle_time_days ~ df$project, var.equal = FALSE) 
+```
+
+    ## 
+    ##  Welch Two Sample t-test
+    ## 
+    ## data:  df$cycle_time_days by df$project
+    ## t = -2.2098, df = 89.915, p-value = 0.02966
+    ## alternative hypothesis: true difference in means is not equal to 0
+    ## 95 percent confidence interval:
+    ##  -4.9786823 -0.2647254
+    ## sample estimates:
+    ## mean in group 0 mean in group 1 
+    ##        3.705882        6.327586
+
+``` r
+t.test(df$cycle_time_days ~ df$project, var.equal = TRUE) 
+```
+
+    ## 
+    ##  Two Sample t-test
+    ## 
+    ## data:  df$cycle_time_days by df$project
+    ## t = -2.1328, df = 107, p-value = 0.03522
+    ## alternative hypothesis: true difference in means is not equal to 0
+    ## 95 percent confidence interval:
+    ##  -5.0584583 -0.1849495
+    ## sample estimates:
+    ## mean in group 0 mean in group 1 
+    ##        3.705882        6.327586
+
+## Time Series
+
+Let’s plot the time series data when Jira task were finished.
 
 ``` r
 freq <- table(finished_date = df$finished_date)
@@ -112,4 +152,4 @@ names(time_series) <- c('finished_date', 'freq')
 ggplot( data = time_series, aes( finished_date, freq )) + geom_line() 
 ```
 
-![](details_dataset_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](details_dataset_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->

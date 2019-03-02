@@ -34,6 +34,8 @@ ggplot(data=freq_year, aes(x=year, y=freq)) + geom_bar(stat="identity")
 
 ```
 
+## Project Data from 2018
+
 Let's inspect the data from 2018.
 
 ```{r}
@@ -41,6 +43,8 @@ df <- df[df$created_date > '2017-12-31',]
 df <- df[df$cycle_time_days > -1,]
 head(df)
 ```
+
+
 
 We can plot the histogram of the cycle times from 2018.
 
@@ -54,7 +58,21 @@ Another interesting aspect is the boxplot for the two projects in 2018.
 ggplot(df, aes(x = project, y = cycle_time_days)) + geom_boxplot()
 ```
 
-Last we can plot the time series when Jira task were finished.
+## T-Test
+
+Now we can use a t-test to compare the two project cycle times.
+
+```{r}
+t.test(df$cycle_time_days ~ df$project, var.equal = FALSE) 
+```
+
+```{r}
+t.test(df$cycle_time_days ~ df$project, var.equal = TRUE) 
+```
+
+## Time Series
+
+Let's plot the time series data when Jira task were finished.
 
 ```{r}
 freq <- table(finished_date = df$finished_date)
